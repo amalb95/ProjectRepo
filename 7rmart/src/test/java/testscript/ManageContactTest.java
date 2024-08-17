@@ -26,7 +26,7 @@ public class ManageContactTest extends Base{
 		System.out.println(phonenumber);
 		String email = ExcelUtility.getStringData(1, 1, "ManageContactPage");
 		String address = ExcelUtility.getStringData(1, 2, "ManageContactPage");
-		String deliverytime = ExcelUtility.getStringData(1, 3, "ManageContactPage");
+		String deliverytime = ExcelUtility.getIntegerData(1, 3, "ManageContactPage");
 		String deliverychargelimit = ExcelUtility.getStringData(1, 4, "ManageContactPage");
 		ManageContactPage managecontactpage = new ManageContactPage(driver);
 		managecontactpage.enterUsernameInUsernameField(username);

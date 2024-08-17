@@ -4,10 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
+import utilities.PageUtility;
 
 public class AddNewUserPage {
 	WebDriver driver;
+	PageUtility pageutility = new PageUtility();
 	public AddNewUserPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -16,7 +18,7 @@ public class AddNewUserPage {
 	@FindBy(xpath = "//input[@name='username']") WebElement usernameField;
 	@FindBy(xpath = "//input[@name='password']") WebElement passwordField;
 	@FindBy(xpath = "//button[text()='Sign In']") WebElement signInButton;
-	@FindBy(xpath = "//a[contains(@href,'list-admin')]") WebElement adminUser;
+	@FindBy(xpath = "//a[contains(@href,'list-admin') and contains(@class,'small')]") WebElement adminUser;
 	@FindBy(xpath = "//a[@onclick='click_button(1)']") WebElement newUser;
 	@FindBy(xpath = "//input[@id='username']") WebElement adminUsernameField;
 	@FindBy(xpath = "//input[@id='password']") WebElement adminPasswordField;
@@ -25,44 +27,54 @@ public class AddNewUserPage {
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']") WebElement alertUserCreated;
 	
 	public void enterUsernameInUsernameField(String username) {
-		usernameField.sendKeys(username);
+		//usernameField.sendKeys(username);
+		pageutility.enterValueIntoElement(usernameField, username);
 	}
 	
 	public void enterPasswordInPasswordField(String password) {
-		passwordField.sendKeys(password);
+		//passwordField.sendKeys(password);
+		pageutility.enterValueIntoElement(passwordField, password);
 	}
 	
 	public void clickOnSignInButton() {
-		signInButton.click();
+		//signInButton.click();
+		pageutility.clickOnAnElement(signInButton);
 	}
 	
 	public void clickOnAdminUsers() {
-		adminUser.click();
+		//adminUser.click();
+		pageutility.clickOnAnElement(adminUser);
 	}
 	
 	public void clickOnNewButton() {
-		newUser.click();
+		//newUser.click();
+		pageutility.clickOnAnElement(newUser);
 	}
 	
 	public void enterUsernameInAdminUserUsernameField(String newusername) {
-		adminUsernameField.sendKeys(newusername);
+		//adminUsernameField.sendKeys(newusername);
+		pageutility.enterValueIntoElement(adminUsernameField, newusername);
 	}
 	
 	public void enterPasswordInAdminUserPasswordField(String newpassword) {
-		adminPasswordField.sendKeys(newpassword);
+		//adminPasswordField.sendKeys(newpassword);
+		pageutility.enterValueIntoElement(adminPasswordField, newpassword);
 	}
 	
 	public void selectUserTypeOfNewUser() {
-		Select select = new Select(adminUserTypeDropdown);
-		select.selectByValue("staff");
+		//Select select = new Select(adminUserTypeDropdown);
+		//select.selectByValue("staff");
+		pageutility.selectDropDownByValue(adminUserTypeDropdown, "staff");
 	}
 	
 	public void clickOnSaveButton() {
-		adminSaveButton.click();
+		//adminSaveButton.click();
+		pageutility.clickOnAnElement(adminSaveButton);
 	}
 	
 	public boolean isUserCreatedSuccessfullyAlertDisplayed() {
-		return alertUserCreated.isDisplayed();
+		//return alertUserCreated.isDisplayed();
+		return pageutility.isAnElementDisplayed(alertUserCreated);
 	}
 	
 }

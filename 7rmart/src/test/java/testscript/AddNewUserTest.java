@@ -17,7 +17,7 @@ public class AddNewUserTest extends Base{
 		//String password = "admin";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
-		String newusername = "aj123";
+		String newusername = "aj12345";
 		String newpassword = "password";
 		AddNewUserPage addnewuserpage = new AddNewUserPage(driver);
 		addnewuserpage.enterUsernameInUsernameField(username);

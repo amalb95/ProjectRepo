@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class ManageNewsPage {
 	WebDriver driver;
+	PageUtility pageutility = new PageUtility();
 	public ManageNewsPage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
@@ -22,35 +25,43 @@ public class ManageNewsPage {
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement newsalert;
 	
 	public void enterUsernameOnUsernameField(String username) {
-		usernameField.sendKeys(username);
+		//usernameField.sendKeys(username);
+		pageutility.enterValueIntoElement(usernameField, username);
 	}
 	
 	public void enterPasswordOnPasswordField(String password) {
-		passwordField.sendKeys(password);
+		//passwordField.sendKeys(password);
+		pageutility.enterValueIntoElement(passwordField, password);
 	}
 	
 	public void clickOnSignInButton() {
-		loginbutton.click();
+		//loginbutton.click();
+		pageutility.clickOnAnElement(loginbutton);
 	}
 	
 	public void clickOnManageNews() {
-		managenews.click();
+		//managenews.click();
+		pageutility.clickOnAnElement(managenews);
 	}
 	
 	public void clickOnAddNewNews() {
-		newbutton.click();
+		//newbutton.click();
+		pageutility.clickOnAnElement(newbutton);
 	}
 	
 	public void enterTheNewsInNewsField(String news) {
-		enterthenews.sendKeys(news);
+		//enterthenews.sendKeys(news);
+		pageutility.enterValueIntoElement(enterthenews, news);
 	}
 	
 	public void clickOnSaveButton() {
-		savebutton.click();
+		//savebutton.click();
+		pageutility.clickOnAnElement(savebutton);
 	}
 	
 	public boolean isAlertDisplayed() {
-		return newsalert.isDisplayed();
+		//return newsalert.isDisplayed();
+		return pageutility.isAnElementDisplayed(newsalert);
 	}
 	
 }

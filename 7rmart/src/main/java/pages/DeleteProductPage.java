@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class DeleteProductPage {
 	WebDriver driver;
+	PageUtility pageutility = new PageUtility();
 	public DeleteProductPage(WebDriver driver){
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -27,30 +30,37 @@ public class DeleteProductPage {
 	
 	
 	public void enterUsernameOnUsernameField(String username) {
-		usernamefield.sendKeys(username);
+		//usernamefield.sendKeys(username);
+		pageutility.enterValueIntoElement(usernamefield, username);
 	}
 	
 	public void enterPasswordOnPasswordField(String password) {
-		passwordfield.sendKeys(password);
+		//passwordfield.sendKeys(password);
+		pageutility.enterValueIntoElement(passwordfield, password);
 	}
 	
 	public void clickOnSignInButton() {
-		signinbutton.click();
+		//signinbutton.click();
+		pageutility.clickOnAnElement(signinbutton);
 	}
 	
 	public void clickOnManageProduct() {
-		manageproduct.click();
+		//manageproduct.click();
+		pageutility.clickOnAnElement(manageproduct);
 	}
 	
 	public void clickOnDeleteButton() {
-		deletebutton.click();
+		//deletebutton.click();
+		pageutility.clickOnAnElement(deletebutton);
 	}
 	
 	public void acceptDeleteAlert() {
-		driver.switchTo().alert().accept();
+		//driver.switchTo().alert().accept();
+		pageutility.acceptAlert(driver);
 	}
 	
 	public boolean isDeleteAlertDisplayed(){
-		return deleteproductalert.isDisplayed();
+		//return deleteproductalert.isDisplayed();
+		return pageutility.isAnElementDisplayed(deleteproductalert);
 	}
 }

@@ -5,8 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
+
 public class LoginPage {
 	WebDriver driver;
+	PageUtility pageutility = new PageUtility();
 	public LoginPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -20,22 +23,27 @@ public class LoginPage {
 	@FindBy(xpath="//div[@class='alert alert-danger alert-dismissible']") WebElement loginalert;
 	
 	public void enterUsernameOnUsernameField(String username) {
-		 usernameField.sendKeys(username);
+		 //usernameField.sendKeys(username);
+		pageutility.enterValueIntoElement(usernameField, username);
 	}
 	
 	public void enterPasswordOnPasswordField(String password) {
-		passwordField.sendKeys(password);
+		//passwordField.sendKeys(password);
+		pageutility.enterValueIntoElement(passwordField, password);
 	}
 	
 	public void clickOnSignInButton() {
-		loginButton.click();
+		//loginButton.click();
+		pageutility.clickOnAnElement(loginButton);
 	}
 	
 	public boolean isHomePageLoaded() {
-		return adminImage.isDisplayed();
+		//return adminImage.isDisplayed();
+		return pageutility.isAnElementDisplayed(adminImage);
 	}
 	
 	public boolean isHomePageNotLoaded() {
-		return loginalert.isDisplayed();
+		//return loginalert.isDisplayed();
+		return pageutility.isAnElementDisplayed(loginalert);
 	}
 }
