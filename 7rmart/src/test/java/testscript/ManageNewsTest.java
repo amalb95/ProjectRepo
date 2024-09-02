@@ -11,11 +11,8 @@ import utilities.ExcelUtility;
 
 public class ManageNewsTest extends Base{
 	
-	@Test
+	@Test(description = "Verify if user can add a new news in Manage News Page")
 	public void verifyAlertIsDisplayedWhenNewNewsisEntered() throws IOException {
-		//String username = "admin";
-		//String password = "admin";
-		//String news = "No new News";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		String news = ExcelUtility.getStringData(1, 0, "ManageNewsPage");

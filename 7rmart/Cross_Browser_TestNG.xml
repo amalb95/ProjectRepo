@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<parameter name="browser" value="Chrome"> </parameter>
+	<listeners>
+		<listener class-name="generatereport.Listeners"></listener>
+	</listeners>
+  <test name="ChromeTest">
+	  <parameter name="browser" value="Chrome"> </parameter>
+    <classes>
+      <class name="testscript.LogoutTest">
+      <methods>
+		  <!--exclude name = "verifyTheUserIsNotAbleToLoginUsingInvalidUsername"></exclude-->
+		  <include name="verifyIfAdminIsAbleToLogOut"></include>
+	  </methods>
+	  </class>
+    </classes>
+  </test> <!-- TestNG.xml -->
+  <test name="EdgeTest">
+	  <parameter name="browser" value="Edge"> </parameter>
+    <classes>
+      <class name="testscript.LogoutTest">
+      <methods>
+		  <include name="verifyIfAdminIsAbleToLogOut"></include>
+		  <!--exclude name = "verifyTheUserIsNotAbleToLoginUsingInvalidUsername"></exclude-->
+	  </methods>
+	  </class>
+    </classes>
+  </test> <!-- TestNG.xml -->
+</suite> <!-- Suite -->

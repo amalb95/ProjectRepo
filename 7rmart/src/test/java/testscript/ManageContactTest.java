@@ -11,19 +11,11 @@ import utilities.ExcelUtility;
 
 public class ManageContactTest extends Base{
 	
-	@Test
+	@Test (description = "Verify if user can update the contact details")
 	public void verifyIfUserCanUpdateContactDetails() throws IOException {
-		//String username="admin";
-		//String password = "admin";
-		//String phoneneumber = "8754421567";
-		//String email = "abc@123.com";
-		//String address = "12 B, Skyline, Kakkanad, Kochi";
-		//String deliverytime = "1 hour";
-		//String deliverychargelimit = "Rs. 100";
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
 		String phonenumber = ExcelUtility.getIntegerData(1, 0, "ManageContactPage");
-		System.out.println(phonenumber);
 		String email = ExcelUtility.getStringData(1, 1, "ManageContactPage");
 		String address = ExcelUtility.getStringData(1, 2, "ManageContactPage");
 		String deliverytime = ExcelUtility.getIntegerData(1, 3, "ManageContactPage");
@@ -42,6 +34,5 @@ public class ManageContactTest extends Base{
 		managecontactpage.clickOnUpdateButton();
 		boolean contactupdatealert = managecontactpage.isContactUpdateAlertDisplayed();
 		assertTrue(contactupdatealert,"User is unable to update contact details");
-	
 	}
 }
