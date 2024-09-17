@@ -25,7 +25,6 @@ public class Base {
 	@BeforeMethod(alwaysRun=true)
 	@Parameters("browser")
 	
-	
 	public void initialiseBrowser(String browser) throws Exception {
 		try {
 			properties = new Properties();

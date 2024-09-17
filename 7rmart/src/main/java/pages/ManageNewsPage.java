@@ -15,49 +15,35 @@ public class ManageNewsPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//input[@placeholder='Username']")
-	WebElement usernameField;
-	@FindBy(xpath="//input[@placeholder='Password']")
-	WebElement passwordField;
-	@FindBy(xpath="//button[text()='Sign In']")
-	WebElement loginbutton;
 	@FindBy(xpath ="//a[contains(@href,'list-news') and @class='small-box-footer']")
-	WebElement managenews;
+	private WebElement managenews;
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']")
-	WebElement newbutton;
+	private WebElement newbutton;
 	@FindBy(xpath="//textarea[@id='news']")
-	WebElement enterthenews;
+	private WebElement enterthenews;
 	@FindBy(xpath="//button[text()='Save']")
-	WebElement savebutton;
+	private WebElement savebutton;
 	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement newsalert;
+	private WebElement newsalert;
 	
-	public void enterUsernameOnUsernameField(String username) {
-		pageutility.enterValueIntoElement(usernameField, username);
-	}
-	
-	public void enterPasswordOnPasswordField(String password) {
-		pageutility.enterValueIntoElement(passwordField, password);
-	}
-	
-	public void clickOnSignInButton() {
-		pageutility.clickOnAnElement(loginbutton);
-	}
-	
-	public void clickOnManageNews() {
+	public ManageNewsPage clickOnManageNews() {
 		pageutility.clickOnAnElement(managenews);
+		return this;
 	}
 	
-	public void clickOnAddNewNews() {
+	public ManageNewsPage clickOnAddNewNews() {
 		pageutility.clickOnAnElement(newbutton);
+		return this;
 	}
 	
-	public void enterTheNewsInNewsField(String news) {
+	public ManageNewsPage enterTheNewsInNewsField(String news) {
 		pageutility.enterValueIntoElement(enterthenews, news);
+		return this;
 	}
 	
-	public void clickOnSaveButton() {
+	public ManageProductPage clickOnSaveButton() {
 		pageutility.clickOnAnElement(savebutton);
+		return new ManageProductPage(driver);
 	}
 	
 	public boolean isAlertDisplayed() {

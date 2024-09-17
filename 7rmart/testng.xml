@@ -8,9 +8,25 @@
   <test thread-count="5" name="TestNG.xml">
     <classes>
       <class name="testscript.LoginTest">
-      <methods>
-		  <include name = "verifyTheUserIsNotAbleToLoginUsingInvalidCredentials"></include>
-	  </methods>
+      <!--methods>
+		  <include name = "verifyTheUserIsAbleToLogin"></include>
+	  </methods-->
+	  </class>
+	  <class name="testscript.AdminUserTest">
+	  </class>
+	  <class name="testscript.FooterTextTest">
+	  </class>
+	  <class name="testscript.ManageCategoryTest">
+	  </class>
+	  <class name="testscript.ManageContactTest">
+	  </class>
+	  <class name="testscript.ManageNewsTest">
+	  </class>
+	  <class name="testscript.ManageProductTest">
+	  </class>
+	  <class name="testscript.ManageSubCategoryTest">
+	  </class>
+	  <class name="testscript.LogoutTest">
 	  </class>
     </classes>
   </test> <!-- TestNG.xml -->

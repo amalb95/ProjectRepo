@@ -15,11 +15,12 @@ public class ScreenshotUtility {
 		TakesScreenshot screenshot = (TakesScreenshot) driver;
 		File screenShot = screenshot.getScreenshotAs(OutputType.FILE);
 		String timestamp = new SimpleDateFormat("DD_MM__YYYY_hh__mm__ss").format(new Date());
-		File f1 = new File(System.getProperty("user.dir")+"//OutputScreenshot");
-		if(!f1.exists()) {
+		File f1 = new File(System.getProperty("user.dir") + "//OutputScreenshot");
+		if (!f1.exists()) {
 			f1.mkdirs();
 		}
-		String destination = System.getProperty("user.dir")+"//OutputScreenshot//"+ failedTestCase + timestamp +".png";
+		String destination = System.getProperty("user.dir") + "//OutputScreenshot//" + failedTestCase + timestamp
+				+ ".png";
 		File finaldestination = new File(destination);
 		FileHandler.copy(screenShot, finaldestination);
 	}

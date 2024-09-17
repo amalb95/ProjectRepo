@@ -15,42 +15,26 @@ public class ManageProductPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	@FindBy(xpath = "//input[@placeholder='Username']")
-	WebElement usernamefield;
-	@FindBy(xpath = "//input[@placeholder='Password']")
-	WebElement passwordfield;
-	@FindBy(xpath = "//button[text()='Sign In']")
-	WebElement signinbutton;
 	@FindBy(xpath = "//a[contains(@href,'list-product') and contains(@class,'small')]")
-	WebElement manageproduct;
+	private WebElement manageproduct;
 	@FindBy(xpath = "//a[contains(@class,'danger ')]")
-	WebElement deletebutton;
+	private WebElement deletebutton;
 	@FindBy(xpath = "//div[@class ='alert alert-success alert-dismissible']")
-	WebElement deleteproductalert;
+	private WebElement deleteproductalert;
 	
-	
-	public void enterUsernameOnUsernameField(String username) {
-		pageutility.enterValueIntoElement(usernamefield, username);
-	}
-	
-	public void enterPasswordOnPasswordField(String password) {
-		pageutility.enterValueIntoElement(passwordfield, password);
-	}
-	
-	public void clickOnSignInButton() {
-		pageutility.clickOnAnElement(signinbutton);
-	}
-	
-	public void clickOnManageProduct() {
+	public ManageProductPage clickOnManageProduct() {
 		pageutility.clickOnAnElement(manageproduct);
+		return this;
 	}
 	
-	public void clickOnDeleteButton() {
+	public ManageProductPage clickOnDeleteButton() {
 		pageutility.clickOnAnElement(deletebutton);
+		return this;
 	}
 	
-	public void acceptDeleteAlert() {
+	public ManageSubCategoryPage acceptDeleteAlert() {
 		pageutility.acceptAlert(driver);
+		return new ManageSubCategoryPage(driver);
 	}
 	
 	public boolean isDeleteAlertDisplayed(){

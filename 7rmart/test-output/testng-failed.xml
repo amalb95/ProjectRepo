@@ -6,19 +6,21 @@
     <listener class-name="generatereport.Listeners"/>
   </listeners>
   <test thread-count="5" name="TestNG.xml(failed)">
-    <groups>
-      <run>
-        <include name="Regression"/>
-      </run>
-    </groups>
     <classes>
-      <class name="testscript.LogoutTest">
+      <class name="testscript.AdminUserTest">
+        <methods>
+          <include name="initialiseBrowser"/>
+          <include name="checkifAdminCanAddANewUser"/>
+          <include name="browserQuit"/>
+        </methods>
+      </class> <!-- testscript.AdminUserTest -->
+      <class name="testscript.FooterTextTest">
         <methods>
           <include name="initialiseBrowser"/>
           <include name="browserQuit"/>
-          <include name="verifyIfAdminIsAbleToLogOut"/>
+          <include name="verifyWhetherUserCanEditFooterText"/>
         </methods>
-      </class> <!-- testscript.LogoutTest -->
+      </class> <!-- testscript.FooterTextTest -->
     </classes>
   </test> <!-- TestNG.xml(failed) -->
 </suite> <!-- Failed suite [Suite] -->

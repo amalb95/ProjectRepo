@@ -10,70 +10,59 @@ import utilities.PageUtility;
 public class AdminUserPage {
 	WebDriver driver;
 	PageUtility pageutility = new PageUtility();
+
 	public AdminUserPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath = "//input[@name='username']") 
-	WebElement usernameField;
-	@FindBy(xpath = "//input[@name='password']") 
-	WebElement passwordField;
-	@FindBy(xpath = "//button[text()='Sign In']") 
-	WebElement signInButton;
-	@FindBy(xpath = "//a[contains(@href,'list-admin') and contains(@class,'small')]") 
-	WebElement adminUser;
-	@FindBy(xpath = "//a[@onclick='click_button(1)']") 
-	WebElement newUser;
-	@FindBy(xpath = "//input[@id='username']") 
-	WebElement adminUsernameField;
-	@FindBy(xpath = "//input[@id='password']") 
-	WebElement adminPasswordField;
-	@FindBy(xpath = "//select[@id='user_type']") 
-	WebElement adminUserTypeDropdown;
-	@FindBy(xpath = "//button[@name='Create']") 
-	WebElement adminSaveButton;
-	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']") 
-	WebElement alertUserCreated;
-	
-	public void enterUsernameInUsernameField(String username) {
-		pageutility.enterValueIntoElement(usernameField, username);
-	}
-	
-	public void enterPasswordInPasswordField(String password) {
-		pageutility.enterValueIntoElement(passwordField, password);
-	}
-	
-	public void clickOnSignInButton() {
-		pageutility.clickOnAnElement(signInButton);
-	}
-	
-	public void clickOnAdminUsers() {
+
+	@FindBy(xpath = "//a[contains(@href,'list-admin') and contains(@class,'small')]")
+	private WebElement adminUser;
+	@FindBy(xpath = "//a[@onclick='click_button(1)']")
+	private WebElement newUser;
+	@FindBy(xpath = "//input[@id='username']")
+	private WebElement adminUsernameField;
+	@FindBy(xpath = "//input[@id='password']")
+	private WebElement adminPasswordField;
+	@FindBy(xpath = "//select[@id='user_type']")
+	private WebElement adminUserTypeDropdown;
+	@FindBy(xpath = "//button[@name='Create']")
+	private WebElement adminSaveButton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	private WebElement alertUserCreated;
+
+	public AdminUserPage clickOnAdminUsers() {
 		pageutility.clickOnAnElement(adminUser);
+		return this;
 	}
-	
-	public void clickOnNewButton() {
+
+	public AdminUserPage clickOnNewButton() {
 		pageutility.clickOnAnElement(newUser);
+		return this;
 	}
-	
-	public void enterUsernameInAdminUserUsernameField(String newusername) {
+
+	public AdminUserPage enterUsernameInUsernameField(String newusername) {
 		pageutility.enterValueIntoElement(adminUsernameField, newusername);
+		return this;
 	}
-	
-	public void enterPasswordInAdminUserPasswordField(String newpassword) {
+
+	public AdminUserPage enterPasswordInPasswordField(String newpassword) {
 		pageutility.enterValueIntoElement(adminPasswordField, newpassword);
+		return this;
 	}
-	
-	public void selectUserTypeOfNewUser() {
+
+	public AdminUserPage selectTypeOfNewUser() {
 		pageutility.selectDropDownByValue(adminUserTypeDropdown, "staff");
+		return this;
 	}
-	
-	public void clickOnSaveButton() {
+
+	public FooterTextPage clickOnSaveButton() {
 		pageutility.clickOnAnElement(adminSaveButton);
+		return new FooterTextPage(driver);
 	}
-	
-	public boolean isUserCreatedSuccessfullyAlertDisplayed() {
+
+	public boolean isAlertDisplayed() {
 		return pageutility.isAnElementDisplayed(alertUserCreated);
 	}
-	
+
 }

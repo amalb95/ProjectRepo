@@ -10,87 +10,78 @@ import utilities.PageUtility;
 public class ManageContactPage {
 	WebDriver driver;
 	PageUtility pageutility = new PageUtility();
+
 	public ManageContactPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement usernamefield;
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement passwordField;
-	@FindBy(xpath = "//button[text()='Sign In']")
-	WebElement signinbutton;
+
 	@FindBy(xpath = "//a[contains(@href,'list-contact') and @class='small-box-footer']")
-	WebElement managecontact;
+	private WebElement managecontact;
 	@FindBy(xpath = "//a[@role='button']")
-	WebElement editcontactbutton;
+	private WebElement editcontactbutton;
 	@FindBy(xpath = "//input[@id='phone']")
-	WebElement phonefield;
+	private WebElement phonefield;
 	@FindBy(xpath = "//input[@id='email']")
-	WebElement emailfield;
+	private WebElement emailfield;
 	@FindBy(xpath = "//textarea[@name ='address']")
-	WebElement addressfield;
+	private WebElement addressfield;
 	@FindBy(xpath = "//textarea[@name='del_time']")
-	WebElement deliverytimefield;
+	private WebElement deliverytimefield;
 	@FindBy(xpath = "//input[@id='del_limit']")
-	WebElement deliverychargelimitfield;
+	private WebElement deliverychargelimitfield;
 	@FindBy(xpath = "//button[@name='Update']")
-	WebElement updatebutton;
+	private WebElement updatebutton;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
-	WebElement contactupdatealert;
-	
-	public void enterUsernameInUsernameField(String username) {
-		pageutility.enterValueIntoElement(usernamefield, username);
-	}
-	
-	public void enterPassowrdInPasswordField(String password) {
-		pageutility.enterValueIntoElement(passwordField, password);
-	}
-	
-	public void clickOnSignInbutton() {
-		pageutility.clickOnAnElement(signinbutton);
-	}
-	
-	public void clickOnManageContact() {
+	private WebElement contactupdatealert;
+
+	public ManageContactPage clickOnManageContact() {
 		pageutility.clickOnAnElement(managecontact);
+		return this;
 	}
-	
-	public void clickOnEditContactButton() {
+
+	public ManageContactPage clickOnEditContact() {
 		pageutility.clickOnAnElement(editcontactbutton);
+		return this;
 	}
-	
-	public void enterPhoneNumber(String phonenumber) {
+
+	public ManageContactPage enterPhoneNumber(String phonenumber) {
 		pageutility.clearATextField(phonefield);
 		pageutility.enterValueIntoElement(phonefield, phonenumber);
+		return this;
 	}
-	
-	public void enterEmail(String email) {
+
+	public ManageContactPage enterEmail(String email) {
 		pageutility.clearATextField(emailfield);
 		pageutility.enterValueIntoElement(emailfield, email);
+		return this;
 	}
-	
-	public void enterAddress(String address) {
+
+	public ManageContactPage enterAddress(String address) {
 		pageutility.clearATextField(addressfield);
 		pageutility.enterValueIntoElement(addressfield, address);
+		return this;
 	}
-	
-	public void enterDeliveryTime(String deliverytime) {
+
+	public ManageContactPage enterDeliveryTime(String deliverytime) {
 		pageutility.clearATextField(deliverytimefield);
 		pageutility.enterValueIntoElement(deliverytimefield, deliverytime);
+		return this;
 	}
-	
-	public void enterDeliveryChargeLimit(String deliverychargelimit) {
+
+	public ManageContactPage enterDeliveryChargeLimit(String deliverychargelimit) {
 		pageutility.clearATextField(deliverychargelimitfield);
 		pageutility.enterValueIntoElement(deliverychargelimitfield, deliverychargelimit);
+		return this;
 	}
-	
-	public void clickOnUpdateButton() {
+
+	public ManageNewsPage clickOnUpdateButton() {
 		pageutility.javaScriptClick(driver, updatebutton);
+		return new ManageNewsPage(driver);
 	}
-	
-	public boolean isContactUpdateAlertDisplayed() {
+
+	public boolean isAlertDisplayed() {
 		return pageutility.isAnElementDisplayed(contactupdatealert);
 	}
-	
+
 }

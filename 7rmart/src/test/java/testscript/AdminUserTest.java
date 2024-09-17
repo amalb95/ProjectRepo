@@ -6,28 +6,29 @@ import java.io.IOException;
 
 import org.testng.annotations.Test;
 
+import constants.Constants;
 import pages.AdminUserPage;
+import pages.FooterTextPage;
+import pages.LoginPage;
 import utilities.ExcelUtility;
 
-public class AdminUserTest extends Base{
-	
-	@Test (description = "Verify if an existing user is able to add a new user in Admin Users Page")
+public class AdminUserTest extends Base {
+
+	public LoginPage loginpage;
+	public AdminUserPage adminuserpage;
+	public FooterTextPage footertextpage;
+
+	@Test(description = "Verify if an existing user is able to add a new user in Admin Users Page")
 	public void checkifAdminCanAddANewUser() throws IOException {
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(1, 1, "LoginPage");
-		String newusername = "am123";
+		String newusername = "amd1235";
 		String newpassword = "password";
-		AdminUserPage adminuserpage = new AdminUserPage(driver);
-		adminuserpage.enterUsernameInUsernameField(username);
-		adminuserpage.enterPasswordInPasswordField(password);
-		adminuserpage.clickOnSignInButton();
-		adminuserpage.clickOnAdminUsers();
-		adminuserpage.clickOnNewButton();
-		adminuserpage.enterUsernameInAdminUserUsernameField(newusername);
-		adminuserpage.enterPasswordInAdminUserPasswordField(newpassword);
-		adminuserpage.selectUserTypeOfNewUser();
-		adminuserpage.clickOnSaveButton();
-		boolean isnewusercreatedalert = adminuserpage.isUserCreatedSuccessfullyAlertDisplayed();
-		assertTrue(isnewusercreatedalert,"New User is not created and alert is not displayed");
+		loginpage = new LoginPage(driver);
+		adminuserpage = loginpage.enterUsername(username).enterPassword(password).clickOnSignInButton();
+		footertextpage = adminuserpage.clickOnAdminUsers().clickOnNewButton().enterUsernameInUsernameField(newusername)
+				.enterPasswordInPasswordField(newpassword).selectTypeOfNewUser().clickOnSaveButton();
+		boolean isnewusercreatedalert = adminuserpage.isAlertDisplayed();
+		assertTrue(isnewusercreatedalert, Constants.ADMINMESSAGE);
 	}
 }

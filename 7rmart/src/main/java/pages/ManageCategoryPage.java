@@ -15,81 +15,72 @@ public class ManageCategoryPage {
 	WebDriver driver;
 	PageUtility pageutility = new PageUtility();
 	FileUploadUtility fileuploadutility = new FileUploadUtility();
+
 	public ManageCategoryPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement usernamefield;
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement passwordField;
-	@FindBy(xpath = "//button[text()='Sign In']")
-	WebElement signinbutton;
-	@FindBy(xpath="//a[contains(@href,'list-category') and contains(@class,'small')]")
-	WebElement managecategoryoption;
-	@FindBy(xpath="//a[@onclick='click_button(1)']")
-	WebElement addnewcategory;
-	@FindBy(xpath="//input[@id='category']")
-	WebElement categorynamefield;
-	@FindBy(xpath="//div[@class='ms-selectable']/ul/li/span")
-	WebElement group;
-	@FindBy(xpath="//input[@id='main_img']")
-	WebElement categoryimage;
-	@FindBy(xpath="//input[@name='top_menu' and @value='yes']")
-	WebElement showontopmenuyes;
-	@FindBy(xpath="//input[@name='show_home' and @value='yes']")
-	WebElement showonleftmenuyes;
-	@FindBy(xpath="//button[text()='Save']")
-	WebElement savebutton;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")
-	WebElement newcategoryalert;
-	
-	public void enterUsernameInUsernameField(String username) {
-		pageutility.enterValueIntoElement(usernamefield, username);
-	}
-	
-	public void enterPassowrdInPasswordField(String password) {
-		pageutility.enterValueIntoElement(passwordField, password);
-	}
-	
-	public void clickOnSignInbutton() {
-		pageutility.clickOnAnElement(signinbutton);
-	}
-	
-	public void clickOnManageCategory() {
+
+	@FindBy(xpath = "//a[contains(@href,'list-category') and contains(@class,'small')]")
+	private WebElement managecategoryoption;
+	@FindBy(xpath = "//a[@onclick='click_button(1)']")
+	private WebElement addnewcategory;
+	@FindBy(xpath = "//input[@id='category']")
+	private WebElement categorynamefield;
+	@FindBy(xpath = "//div[@class='ms-selectable']/ul/li/span")
+	private WebElement group;
+	@FindBy(xpath = "//input[@id='main_img']")
+	private WebElement categoryimage;
+	@FindBy(xpath = "//input[@name='top_menu' and @value='yes']")
+	private WebElement showontopmenuyes;
+	@FindBy(xpath = "//input[@name='show_home' and @value='yes']")
+	private WebElement showonleftmenuyes;
+	@FindBy(xpath = "//button[text()='Save']")
+	private WebElement savebutton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	private WebElement newcategoryalert;
+
+	public ManageCategoryPage clickOnManageCategory() {
 		pageutility.clickOnAnElement(managecategoryoption);
+		return this;
 	}
-	
-	public void clickOnNewCategory() {
+
+	public ManageCategoryPage clickOnNewCategory() {
 		pageutility.clickOnAnElement(addnewcategory);
+		return this;
 	}
-	
-	public void enterCategoryName(String categoryname) {
+
+	public ManageCategoryPage enterCategoryName(String categoryname) {
 		pageutility.enterValueIntoElement(categorynamefield, categoryname);
+		return this;
 	}
-	
-	public void selectGroupofcategory() {
+
+	public ManageCategoryPage selectGroupofcategory() {
 		pageutility.clickOnAnElement(group);
+		return this;
 	}
-	
-	public void selectCategoryImage() throws AWTException {
-		//fileuploadutility.fileuploadUsingRobertClass(categoryimage, Constants.CATEGORYIMAGE);
+
+	public ManageCategoryPage selectCategoryImage() throws AWTException {
+		fileuploadutility.fileUploadUsingRobotClass(categoryimage,Constants.CATEGORYIMAGE);
 		fileuploadutility.fileUploadUsingSendKeys(categoryimage, Constants.CATEGORYIMAGE);
+		return this;
 	}
-	
-	public void showOnTopMenuSelect() {
+
+	public ManageCategoryPage showOnTopMenuSelect() {
 		pageutility.javaScriptClick(driver, showontopmenuyes);
+		return this;
 	}
-	
-	public void showOnLeftMenuSelect() {
+
+	public ManageCategoryPage showOnLeftMenuSelect() {
 		pageutility.javaScriptClick(driver, showonleftmenuyes);
+		return this;
 	}
-	
-	public void clickOnSaveButton() {
+
+	public ManageContactPage clickOnSaveButton() {
 		pageutility.javaScriptClick(driver, savebutton);
+		return new ManageContactPage(driver);
 	}
-	
+
 	public boolean isNewCategoryAlertDisplayed() {
 		return pageutility.isAnElementDisplayed(newcategoryalert);
 	}
