@@ -10,7 +10,6 @@ import constants.Constants;
 import pages.AdminUserPage;
 import pages.LoginPage;
 import pages.LogoutPage;
-import pages.ManageProductPage;
 import pages.ManageSubCategoryPage;
 import utilities.ExcelUtility;
 
